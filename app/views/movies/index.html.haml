@@ -11,15 +11,17 @@
             %img= image_tag(movie.image)
           .ten.columns
             .title= link_to(movie.title, movie_path(movie.id))
-            %div
+            .movie_info
               %div Available At:
-              %ul
-                -movie.theaters.each do |theater|
-                  %li
-                    %span= link_to(theater.name, theater_path(theater.id))
-                    -if @current_user.present?
-                      %span= link_to("Buy Tickets", theater_path(theater.id), :class => "button radius tiny")
-                    -else
-                      %span= link_to("Buy Tickets", theater_path(theater.id), :class => "button radius tiny disabled")
+              -movie.theaters.each do |theater|
+                .theater_list
+                  .row
+                    .six.columns
+                      %span= link_to(theater.name, theater_path(theater.id))
+                    .six.columns
+                      -if @current_user.present?
+                        %span= link_to("Buy Tickets", theater_path(theater.id), :class => "button radius tiny")
+                      -else
+                        %span= link_to("Buy Tickets", theater_path(theater.id), :class => "button radius tiny disabled")
 
   .four.columns

@@ -9,6 +9,7 @@ function show_seating_chart()
 {
   $("#buy").hide();
   $("#seats").removeClass("hide");
+  $("#purch").removeClass("hide");
 }
 
 function hide_seating_chart()
@@ -16,6 +17,7 @@ function hide_seating_chart()
   $("#buy").show();
   $("#seats").addClass("hide");
   $("#selected").empty();
+  $("#purch").addClass("hide");
 }
 
 function selected()

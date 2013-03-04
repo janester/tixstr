@@ -18,8 +18,8 @@ t3 = Theater.create(:name => "Sunset Strip Theater", :location => "Columbus")
 t4 = Theater.create(:name => "The Mulholland", :location => "Lexington")
 
 m1.theaters << t1
-m2.theaters << t2 << t3
-m5.theaters << t4
+m2.theaters << t2 << t4
+m5.theaters << t3
 
 Movie.all.each do |movie|
   15.times do
