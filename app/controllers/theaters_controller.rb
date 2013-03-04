@@ -9,16 +9,17 @@ class TheatersController < ApplicationController
 
   def buy
     tickets = params[:ticket_ids]
+    theater = Theater.find(params[:id])
     tickets = tickets.split
     tickets.each do |ticket|
       t = Ticket.find(ticket)
-      @current_user.tickets << t
-      t.is_bought = true
-      t.save
+      if t.user_id != nil
+        @current_user.tickets << t
+        t.is_bought = true
+        t.save
+      end
     end
-    bought = Ticket.all.select {|i| i.is_bought}
-    bought.map(&:id)
-    bought = bought.join(" ")
+    bought = theater.movie.tickets.select {|i| i.is_bought}
     render :json => bought
   end
 end

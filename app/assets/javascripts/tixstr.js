@@ -22,12 +22,20 @@ function hide_seating_chart()
 
 function selected()
 {
-  $("#purch").removeClass("hide");
-  var selection = $(this).text();
-  var div = $("<div>").text(selection);
-  div.addClass("box");
-  $("#selected").prepend(div);
-  $(this).addClass("bought");
+  if($(this).css("background-color") == "rgb(128, 128, 128)")
+  {
+    return false;
+  }
+  else
+  {
+    $("#purch").removeClass("hide");
+    var selection = $(this).text();
+    var div = $("<div>").text(selection);
+    div.addClass("box");
+    $("#selected").prepend(div);
+    $(this).addClass("bought");
+  }
+
 }
 
 function purchase_tickets()
@@ -46,8 +54,9 @@ function purchase_tickets()
   return false;
 }
 
-function display_bought()
+function display_bought(message)
 {
+  console.log(message);
   hide_seating_chart();
   $("#bought_message").removeClass("hide");
 }
