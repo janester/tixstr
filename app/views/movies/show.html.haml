@@ -1,0 +1,26 @@
+.row
+  .twelve.columns
+    %h1= @movie.title
+.row
+  .four.columns
+    .info
+      .poster= image_tag(@movie.image)
+      %div
+        %span Runtime:
+        %span= @movie.runtime
+      %div
+        %span Rating:
+        %span= @movie.rating
+  .four.columns
+    %h3 Available At:
+    -@movie.theaters.each do |theater|
+      .theater
+        %div= link_to(theater.name, theater_path(theater.id))
+        %div
+          %span Location:
+          %span= theater.location
+  .four.columns
+
+
+
+

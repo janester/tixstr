@@ -1,0 +1,21 @@
+.row
+  .twelve.columns
+    %h1 Tixstr Theaters
+
+-@theaters.each do |theater|
+  .row
+    .five.columns
+      .theater
+        .title= link_to(theater.name, theater_path(theater.id))
+        %div
+          %span Location:
+          %span= theater.location
+        %div
+          %span Now Playing:
+          %span= link_to(theater.movie.title, movie_path(theater.movie.id))
+    .seven.columns
+      -if @current_user.present?
+        =link_to("Buy Tickets", theater_path(theater.id), :class => "button radius")
+      -else
+        =link_to("Buy Tickets", theater_path(theater.id), :class => "button radius disabled")
+

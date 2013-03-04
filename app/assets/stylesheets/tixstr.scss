@@ -1,0 +1,49 @@
+.theater, .movie {
+  .title {
+    font-size: 20px;
+  }
+  border-bottom: 1px solid gray;
+  margin-top: 10px;
+  padding: 0px 0px 10px 15px;
+  margin-left: 30px;
+  ul {
+    padding-left: 20px;
+    margin-bottom: 0px;
+  }
+}
+
+#now_showing {
+  vertical-align: top;
+  line-height: 20px;
+  margin: 0px;
+}
+
+#theater_head {
+  margin-bottom: 40px;
+}
+
+#topbar {
+  margin: 0px;
+  padding: 0px;
+}
+
+.box {
+  height: 50px;
+  width: 50px;
+  background: #3D78B8;
+  border: 1px solid black;
+  display: inline-block;
+  margin: 7px;
+}
+
+.hide {
+  display: hidden;
+}
+
+.bought {
+  background: grey;
+  color: white;
+}
+#cancel {
+  display: block;
+}

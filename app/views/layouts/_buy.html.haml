@@ -1,0 +1,17 @@
+-if @current_user.present?
+  %div#buy
+    = link_to("Buy Tickets", theaters_buy_path, :class => "button radius")
+
+
+  #selected
+    #purch.hide= button_tag "Purchase", :id => "purchase", :class => "button radius"
+  #seats.hide
+    %div Select Your Seat(s):
+    =button_tag "Cancel", :id => "cancel", :class => "button radius alert"
+
+-else
+  %div#buy= button_tag("Buy Tickets", :class => "button radius disabled")
+
+
+
+

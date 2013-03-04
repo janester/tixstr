@@ -1,0 +1,45 @@
+.row
+  .twelve.columns
+    #theater_head
+      %h1= @theater.name
+      %div
+        %span Location:
+        %span= @theater.location
+.row
+  .three.columns
+    %h3#now_showing Now Showing:
+  .four.columns
+    %div
+      %div= link_to(@theater.movie.title, movie_path(@theater.movie.id))
+      %div= image_tag(@theater.movie.image)
+      %div
+        %span Runtime:
+        %span= @theater.movie.runtime
+      %div
+        %span Rating:
+        %span= @theater.movie.rating
+  .five.columns
+    -if @current_user.present?
+      %div#buy
+        = button_tag("Buy Tickets", :class => "button radius")
+      #tid.hide= @theater.id
+      #bought_message.hide You Have Successfully Purchased Your Tickets!
+      #selected
+      #purch.hide
+        =form_tag buy_theater_path do
+          = button_tag "Purchase", :id => "purchase", :action => "/theaters/buy", :method => :post, :class => "button radius", :confirm => "Are you sure?"
+      #seats.hide
+        %div Select Your Seat(s):
+        -@theater.movie.tickets.order(:id).each do |ticket|
+          -if ticket.is_bought
+            .ticket.box.bought= ticket.id
+          -else
+            .ticket.box= ticket.id
+        =button_tag "Cancel", :id => "cancel", :class => "button radius alert"
+
+    -else
+      %div#buy= button_tag("Buy Tickets", :class => "button radius disabled")
+
+
+
+
